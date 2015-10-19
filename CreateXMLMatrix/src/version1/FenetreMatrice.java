@@ -1,9 +1,13 @@
 package version1;
 
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -11,8 +15,8 @@ import javax.swing.JTextField;
 public class FenetreMatrice extends JFrame {
 
 	private ArrayList<JTextField> listTextField;
-	private Matrice matrice;	
-	
+	private Matrice matrice;
+
 	public FenetreMatrice(Matrice matrice) {
 		super();
 		this.matrice = matrice;
@@ -21,11 +25,11 @@ public class FenetreMatrice extends JFrame {
 
 	private void build() {
 		// TODO Auto-generated method stub
-		setTitle("Veuillez renseigner la matrice"); 
-		setSize(400,240); 
-		setLocationRelativeTo(null); 
-		setResizable(true); 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		setTitle("Veuillez renseigner la matrice");
+		setSize(400,240);
+		setLocationRelativeTo(null);
+		setResizable(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(constructFenetreMatrice());
 	}
 
@@ -37,6 +41,43 @@ public class FenetreMatrice extends JFrame {
 		panel2.setLayout(new GridLayout(matrice.getNbLigne(),matrice.getNbColonne()));
 		for(int i=0;i<matrice.getNbColonne()*matrice.getNbLigne();i++){
 			listTextField.add(new JTextField());
+			listTextField.get(listTextField.size()-1).addMouseListener(new MouseListener() {
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					JTextField text = (JTextField)e.getSource();
+					// TODO Auto-generated method stub
+					if(e.isPopupTrigger()){
+						Color couleur = JColorChooser.showDialog
+								(null, "couleur du fond", Color.WHITE);
+						text.setBackground(couleur);
+					}
+				}
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+			});
 			panel2.add(listTextField.get(listTextField.size()-1));
 		}
 		panel.add(panel2);
@@ -57,7 +98,7 @@ public class FenetreMatrice extends JFrame {
 	public Matrice getMatrice() {
 		return matrice;
 	}
-	
-	
+
+
 
 }

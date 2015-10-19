@@ -34,6 +34,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 		for(i=0; i<matrice.getMatrice().length; i++) {
 			for(j=0; j<matrice.getMatrice()[i].length; j++) {
 				matrice.setMatrice(i,j,fenetre.getListTextField().get(x).getText());
+				matrice.setCouleur(i,j,fenetre.getListTextField().get(x).getBackground());
 				x++;
 			}
 		}
@@ -47,7 +48,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 	public void creationXmlMatrice(){
 		Document document = null;
 		DocumentBuilderFactory fabrique=null;
-		
+
 		try{
 			fabrique = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = fabrique.newDocumentBuilder();
@@ -57,7 +58,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 			racine.setAttribute("nbLigne", Integer.toString(matrice.getNbLigne()));
 			racine.setAttribute("nbColonne", Integer.toString(matrice.getNbColonne()));
 			document.appendChild(racine);
-			
+
 			for(int i=0; i<matrice.getMatrice().length; i++) {
 				for(int j=0; j<matrice.getMatrice()[i].length; j++) {
 					Element cell = (Element) document.createElement("cell");
@@ -65,10 +66,10 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 					racine.appendChild(cell);
 				}
 			}
-			
+
 			XMLSerializer ser = new XMLSerializer(System.out, new OutputFormat("xml", "UTF-8",true));
 			ser.serialize(document);
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -78,7 +79,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 	public void creationXmlMatriceGrav(){
 		Document document = null;
 		DocumentBuilderFactory fabrique=null;
-		
+
 		try{
 			fabrique = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = fabrique.newDocumentBuilder();
@@ -88,7 +89,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 			racine.setAttribute("nbLigne", Integer.toString(matrice.getNbColonne()-1));
 			racine.setAttribute("nbColonne", Integer.toString(2));
 			document.appendChild(racine);
-			
+
 			for(int i=0; i<matrice.getInfoGravite().length; i++) {
 					Element ligne = (Element) document.createElement("ligne");
 					Element gravite = (Element) document.createElement("gravite");
@@ -99,10 +100,10 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 					ligne.appendChild(description);
 					racine.appendChild(ligne);
 			}
-			
+
 			XMLSerializer ser = new XMLSerializer(System.out, new OutputFormat("xml", "UTF-8",true));
 			ser.serialize(document);
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -111,7 +112,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 	public void creationXmlMatriceProb(){
 		Document document = null;
 		DocumentBuilderFactory fabrique=null;
-		
+
 		try{
 			fabrique = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = fabrique.newDocumentBuilder();
@@ -121,7 +122,7 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 			racine.setAttribute("nbLigne", Integer.toString(matrice.getNbLigne()-1));
 			racine.setAttribute("nbColonne", Integer.toString(2));
 			document.appendChild(racine);
-			
+
 			for(int i=0; i<matrice.getInfoProbabilite().length; i++) {
 					Element ligne = (Element) document.createElement("ligne");
 					Element proba = (Element) document.createElement("probabilite");
@@ -132,10 +133,10 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 					ligne.appendChild(description);
 					racine.appendChild(ligne);
 			}
-			
+
 			XMLSerializer ser = new XMLSerializer(System.out, new OutputFormat("xml", "UTF-8",true));
 			ser.serialize(document);
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}

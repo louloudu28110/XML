@@ -1,6 +1,6 @@
 package version1;
 
-import java.util.ArrayList;
+import java.awt.Color;
 
 public class Matrice {
 
@@ -10,7 +10,8 @@ public class Matrice {
 	private String[][] matrice;
 	private String[][] infoGravite;
 	private String[][] infoProbabilite;
-	
+	private Color[][] couleur;
+
 	public Matrice(String nom, int nbLigne, int nbColonne) {
 		super();
 		this.nom = nom;
@@ -19,6 +20,7 @@ public class Matrice {
 		this.matrice = new String[nbLigne][nbColonne];
 		this.infoGravite = new String[nbColonne-1][2];
 		this.infoProbabilite = new String[nbLigne-1][2];
+		this.couleur = new Color[nbLigne][nbColonne];
 	}
 
 	public String getNom() {
@@ -56,10 +58,20 @@ public class Matrice {
 	public void setInfoProbabilite(int i, int j, String value) {
 		this.infoProbabilite[i][j] = value;
 	}
-	
-	
-	
-	
-	
-	
+
+	public Color[][] getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(int i, int j, Color couleur) {
+		this.couleur[i][j] = couleur;
+	}
+
+
+
+
+
+
+
+
 }
