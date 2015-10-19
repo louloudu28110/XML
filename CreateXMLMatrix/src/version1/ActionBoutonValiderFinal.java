@@ -38,9 +38,15 @@ public class ActionBoutonValiderFinal extends AbstractAction {
 				x++;
 			}
 		}
-		creationXmlMatrice();
-		creationXmlMatriceGrav();
-		creationXmlMatriceProb();
+		for(i=0; i<matrice.getMatrice().length; i++) {
+			for(j=0; j<matrice.getMatrice()[i].length; j++) {
+				System.out.println("A la ligne " + i + " et colonne " + j + " on a comme valeur : " + matrice.getMatrice(i,j) + " et comme couleur : " + matrice.getCouleur(i, j));
+				x++;
+			}
+		}
+		//creationXmlMatrice();
+		//creationXmlMatriceGrav();
+		//creationXmlMatriceProb();
 		fenetre.dispose();
 
 	}

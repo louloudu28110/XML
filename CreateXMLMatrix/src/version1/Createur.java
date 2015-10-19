@@ -9,6 +9,7 @@ public class Createur {
 		// TODO Auto-generated method stub
 		FenetreSaisieTaille fenetre = new FenetreSaisieTaille();
 		fenetre.setVisible(true);
+
 	}
 
 }

@@ -40,6 +40,12 @@ public class FenetreMatrice extends JFrame {
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(matrice.getNbLigne(),matrice.getNbColonne()));
 		for(int i=0;i<matrice.getNbColonne()*matrice.getNbLigne();i++){
+			if(i == 0){
+				listTextField.add(new JTextField());
+				listTextField.get(i).setBackground(Color.BLACK);
+				panel2.add(listTextField.get(listTextField.size()-1));
+			}
+			else{
 			listTextField.add(new JTextField());
 			listTextField.get(listTextField.size()-1).addMouseListener(new MouseListener() {
 
@@ -48,9 +54,12 @@ public class FenetreMatrice extends JFrame {
 					JTextField text = (JTextField)e.getSource();
 					// TODO Auto-generated method stub
 					if(e.isPopupTrigger()){
-						Color couleur = JColorChooser.showDialog
-								(null, "couleur du fond", Color.WHITE);
+						//Color couleur = JColorChooser.showDialog(null, "Choissisez la couleur de la cellule", Color.WHITE);
+						CCouleurFrame c = new CCouleurFrame();
+						Color couleur = c.chooser.getColor();
+								//JColorChooser.showDialog(c, "Choissisez la couleur", Color.WHITE);
 						text.setBackground(couleur);
+
 					}
 				}
 
@@ -79,6 +88,7 @@ public class FenetreMatrice extends JFrame {
 				}
 			});
 			panel2.add(listTextField.get(listTextField.size()-1));
+			}
 		}
 		panel.add(panel2);
 		JPanel panel3 = new JPanel();

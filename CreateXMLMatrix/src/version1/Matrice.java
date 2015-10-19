@@ -35,8 +35,8 @@ public class Matrice {
 		return nbColonne;
 	}
 
-	public String[][] getMatrice() {
-		return matrice;
+	public String getMatrice(int i, int j) {
+		return matrice[i][j];
 	}
 
 	public void setMatrice(int i, int j, String value) {
@@ -59,13 +59,23 @@ public class Matrice {
 		this.infoProbabilite[i][j] = value;
 	}
 
-	public Color[][] getCouleur() {
-		return couleur;
+	public Color getCouleur(int i, int j) {
+		return couleur[i][j];
 	}
 
 	public void setCouleur(int i, int j, Color couleur) {
 		this.couleur[i][j] = couleur;
 	}
+
+	public String[][] getMatrice() {
+		return matrice;
+	}
+
+	public Color[][] getCouleur() {
+		return couleur;
+	}
+
+
 
 
 
